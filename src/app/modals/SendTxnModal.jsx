@@ -10,7 +10,7 @@ export default function SendTxnModal({
 }) {
   return (
        <>
-        <Modal isOpen={isModalOpen} onOpenChange={onOpenChange}>
+        <Modal isOpen={isModalOpen} onOpenChange={onOpenChange} onClose={onCancel}>
         <ModalContent>
           {(onClose) => (
             <>

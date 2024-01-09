@@ -1,6 +1,6 @@
 'use Client'
-import React,{useState} from 'react';
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, Spinner,Button } from "@nextui-org/react";
+import React, from 'react';
+import { Modal, ModalContent,  ModalBody, ModalFooter, Spinner,Button } from "@nextui-org/react";
 
 import { shortAddress } from '../utils/shortAddress';
 
@@ -15,7 +15,7 @@ export default function SignMessageModal({
   return (
 <>
 
- <Modal isOpen={isModalOpen} closeButton={true} isDismissable={true}  onClose={() => {setIsOpen(false)}} >
+ <Modal isOpen={isModalOpen} closeButton={true} isDismissable={true}  onClose={onCancel} >
         <ModalContent>
           {(onClose) => (
             <>
@@ -58,7 +58,7 @@ export default function SignMessageModal({
         )}
               </ModalBody>
               <ModalFooter>
-                <Button color="danger" variant="light" onPress={setIsOpen(false)}>
+                <Button color="danger" variant="light" onPress={onCancel}>
                   Close
                 </Button>
               
