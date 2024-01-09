@@ -12,6 +12,7 @@
     "@nextui-org/react": "^2.2.9",
     "@plenaconnect/utils": "^1.0.0",
     "@walletconnect/encoding": "^1.0.2",
+    "ethereumjs-util": "^7.1.5",
     "ethers": "^5.7.2",
     "framer-motion": "^10.17.9",
     "next": "14.0.4",
