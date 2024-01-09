@@ -8,7 +8,7 @@ export default function SignMessageModal({
   pendingRequest = false,
   result = {},
 }) {
-  console.log(pendingRequest);
+ // console.log(pendingRequest);
 
   return (
     <>

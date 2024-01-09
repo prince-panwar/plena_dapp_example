@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+'use client'
+import React, { useState ,useEffect} from 'react';
 import { eip1271 } from './utils/eip1271';
 import { hashMessage } from './utils/utiliities';
 import { Button } from '@nextui-org/react';
@@ -19,6 +20,10 @@ export default function Home() {
   const disconnect = async () => {
     closeConnection();
   };
+  
+ useEffect(()=>{
+   console.log(pending);
+  },[pending]);
 
   const openTxnModal = () => {
     setIsTxnModalOpen(true);
@@ -117,6 +122,8 @@ export default function Home() {
   const testSignTransaction = async () => {
     openSignModal();
     setPending(true);
+   
+    
 
     try {
       const message = `My email is john@doe.com - ${new Date().toUTCString()}`;
