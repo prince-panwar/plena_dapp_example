@@ -9,6 +9,7 @@ import SendTxnModal from './modals/SendTxnModal';
 import SignMessageModal from './modals/SignMessage';
 import { ethers } from 'ethers';
 import Header from './components/Header';
+import { convertUtf8ToHex} from '@plenaconnect/utils';
 
 export default function ClientSideComponent() {
   const [pending, setPending] = useState(false);
