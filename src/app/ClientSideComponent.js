@@ -1,5 +1,5 @@
 'use client'
-import React, { useState ,useEffect} from 'react';
+import React, { useState } from 'react';
 import { eip1271 } from './utils/eip1271';
 import { hashMessage } from './utils/utiliities';
 import { Button } from '@nextui-org/react';
