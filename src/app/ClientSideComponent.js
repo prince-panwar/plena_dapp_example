@@ -10,6 +10,9 @@ import SignMessageModal from './modals/SignMessage';
 import { ethers } from 'ethers';
 import Header from './components/Header';
 import { convertUtf8ToHex} from '@plenaconnect/utils';
+import Web3 from 'web3';
+import { PlenaUtils } from './utils/PlenaUtils';
+const web3 = new Web3(Web3.givenProvider);
 
 export default function ClientSideComponent() {
   const [pending, setPending] = useState(false);
@@ -77,9 +80,10 @@ export default function ClientSideComponent() {
         type: 'function',
       },
     ];
-    const contract = new ethers.utils.Interface(abi1);
+    const contract = new web3.eth.Contract(abi1);
 
-    const txnData1 = contract.encodeFunctionData('transfer', [lendingPool, '1']);
+    // Encode function data
+    const txnData1 = contract.methods.transfer(lendingPool, '1').encodeABI();
     // Draft transaction
     const tx = {
       from: walletAddress,
@@ -144,14 +148,19 @@ export default function ClientSideComponent() {
         return;
       }
 
-      const hash = hashMessage(message);
+      const hash = PlenaUtils.hashMessage(message);
       const polygonProvider = new ethers.providers.JsonRpcProvider('https://polygon-rpc.com/');
-      const valid = await eip1271.isValidSignature(
+      try{
+      const valid = await PlenaUtils.validatePlenaSig(
         walletAddress,
         res?.content?.signature,
         hash,
         polygonProvider
       );
+      console.log(valid);
+      }catch(e){
+        console.log(e);
+      }
 
       const formattedResult = {
         method: 'personal_sign',
